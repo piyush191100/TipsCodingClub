@@ -1,37 +1,26 @@
-#include <stdio.h>
-#include <math.h>
+#include <iostream>
+using namespace std;
 
-int main(void) {
-    int num, temp, digit, sum = 0, digits = 0;
+int main() {
+    int num, originalNum, remainder, result = 0;
+    cout << "Enter a three-digit integer: ";
+    cin >> num;
+    originalNum = num;
 
-    
-    printf("Enter a number: ");
-    scanf("%d", &num);
-
-    
-    temp = num;
-
-    
-    while (temp != 0) {
-        temp /= 10;
-        digits++;
+    while (originalNum != 0) {
+        // remainder contains the last digit
+        remainder = originalNum % 10;
+        
+        result += remainder * remainder * remainder;
+        
+        // removing last digit from the orignal number
+        originalNum /= 10;
     }
 
-    
-    temp = num;
-
-    
-    while (temp != 0) {
-        digit = temp % 10;
-        sum += pow(digit, digits);
-        temp /= 10;
-    }
-
-    if (num == sum) {
-        printf("The number is an Armstrong number.\n");
-    } else {
-        printf("The number is not an Armstrong number.\n");
-    }
+    if (result == num)
+        cout << num << " is an Armstrong number.";
+    else
+        cout << num << " is not an Armstrong number.";
 
     return 0;
 }
